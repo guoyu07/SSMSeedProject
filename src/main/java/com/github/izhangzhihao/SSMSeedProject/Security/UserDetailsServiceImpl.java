@@ -1,4 +1,4 @@
-package com.github.izhangzhihao.SSMSeedProject.security;
+package com.github.izhangzhihao.SSMSeedProject.Security;
 
 import com.github.izhangzhihao.SSMSeedProject.Model.User;
 import com.github.izhangzhihao.SSMSeedProject.Service.UserService;

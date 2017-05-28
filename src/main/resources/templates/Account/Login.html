@@ -8,11 +8,11 @@
     function reloadValidateCode() {
         $("#validateCodeImg").attr("src", "/Account/validateCode?data=" + new Date() + Math.floor(Math.random() * 24));
     }
-//    $(document).ready(function () {
-//        $("#submit").click(function () {
-//            document.getElementById("Password").value = hex_sha256($("#UserName").val() + $("#Password").val());
-//        });
-//    });
+    $(document).ready(function () {
+        $("#submit").click(function () {
+            document.getElementById("Password").value = hex_sha256($("#UserName").val() + $("#Password").val());
+        });
+    });
 </script>
 <body>
 

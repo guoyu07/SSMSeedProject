@@ -1,4 +1,4 @@
-package com.github.izhangzhihao.SSMSeedProject.security;
+package com.github.izhangzhihao.SSMSeedProject.Security;
 
 import org.springframework.security.core.AuthenticationException;
 

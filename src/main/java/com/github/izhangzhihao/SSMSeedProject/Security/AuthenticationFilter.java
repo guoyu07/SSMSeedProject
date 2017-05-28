@@ -1,5 +1,6 @@
-package com.github.izhangzhihao.SSMSeedProject.security;
+package com.github.izhangzhihao.SSMSeedProject.Security;
 
+import com.github.izhangzhihao.SSMSeedProject.Utils.SHAUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,7 +27,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     @Override
     protected String obtainPassword(HttpServletRequest request) {
-        return request.getParameter("Password");
+        return SHAUtils.getSHA_256(request.getParameter("Password"));
     }
 
     @Override

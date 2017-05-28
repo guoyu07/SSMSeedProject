@@ -1,12 +1,10 @@
 package com.github.izhangzhihao.SSMSeedProject.Config;
 
-import com.github.izhangzhihao.SSMSeedProject.security.AuthenticationFilter;
+import com.github.izhangzhihao.SSMSeedProject.Security.AuthenticationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.AuthenticationProvider;
-import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.config.BeanIds;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -45,7 +43,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/webjars/**").permitAll()
                 .antMatchers("/app/**").permitAll()
                 .antMatchers("/assets/**").permitAll()
-                .antMatchers("/Account/Login").anonymous()
+                .antMatchers("/Account/**").anonymous()
+                .antMatchers("/console/**").anonymous()
 
                 .and()
 
@@ -77,5 +76,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .csrf()
                 .disable();
+
+        http.headers().frameOptions().disable();
     }
 }
