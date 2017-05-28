@@ -1,0 +1,27 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="index :: head">
+
+</head>
+
+<body>
+
+
+<div class="wrapper-page">
+    <div class="ex-page-content text-center">
+        <h1>404!</h1>
+        <h2>这个页面不见了！</h2><br/>
+        <br/>
+        <a class="btn btn-purple waves-effect waves-light" href="/"><i class="fa fa-angle-left"></i>返回首页</a>
+    </div>
+</div>
+
+
+<div th:replace="index :: javascript">
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="index :: head">
+
+</head>
+
+<body>
+
+
+<div class="wrapper-page">
+    <div class="ex-page-content text-center">
+        <h1>500!</h1>
+        <h2>真是尴尬，出了一个错误！</h2><br/>
+        <br/>
+        <a class="btn btn-purple waves-effect waves-light" href="/"><i class="fa fa-angle-left"></i>返回首页</a>
+        <script type="text/javascript">
+            console.log("错误信息[[${MSG}]]");
+            console.log("出错行[[${Line}]]");
+            console.log("出错方法[[${Method}]]");
+        </script>
+    </div>
+</div>
+
+
+<div th:replace="index :: javascript">
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+
+---
+
+spring:
+    profiles: development
+    h2:
+        console:
+            enabled: true
+            path: /console
+    datasource:
+        name: SSMSeedProject
+        url: jdbc:h2:~/test;DB_CLOSE_ON_EXIT=FALSE
+        initialize: true
+        platform: h2
+        continue-on-error: true
+    thymeleaf:
+      cache: false
+      mode: html
+    autoconfigure:
+      exclude: org.springframework.boot.autoconfigure.web.ErrorMvcAutoConfiguration
+management:
+    security:
+        enabled: false
+#security:
+#  basic:
+#    enabled: false
+#  ignored: /**
+mybatis:
+  type-aliases-package: com.github.izhangzhihao.SSMSeedProject.Model
+  configuration:
+    cache-enabled: false
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+
+---
+
+spring:
+    profiles: test
+    datasource:
+        name: SSMSeedProject
+        url: jdbc:h2:~/test;DB_CLOSE_ON_EXIT=FALSE
+        initialize: true
+        platform: h2
+        continue-on-error: true
+    thymeleaf:
+      cache: false
+      mode: html
+
+---
+
+spring:
+    profiles: production
+    datasource:
+        name: SSMSeedProject
+        url: jdbc:mysql:///SSMSeedProject?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC&useSSL=false
+        username: root
+        password:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+    thymeleaf:
+      mode: html

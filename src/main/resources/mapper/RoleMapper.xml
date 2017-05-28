@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.github.izhangzhihao.SSMSeedProject.Mapper.RoleMapper">
+    <resultMap id="RoleMap" type="com.github.izhangzhihao.SSMSeedProject.Model.Role">
+        <id column="roleName" property="roleName" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        roleName
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="RoleMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from role
+        where roleName = #{roleName,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        delete from role
+        where roleName = #{roleName,jdbcType=VARCHAR}
+    </delete>
+
+    <insert id="insert" parameterType="com.github.izhangzhihao.SSMSeedProject.Model.Role">
+        insert into role (roleName)
+        values (#{roleName,jdbcType=VARCHAR})
+    </insert>
+
+    <select id="selectAllRole" resultMap="RoleMap">
+        select
+        <include refid="Base_Column_List"/>
+        from role
+    </select>
+
+</mapper>

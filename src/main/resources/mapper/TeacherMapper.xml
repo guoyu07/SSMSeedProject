@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--suppress SqlDialectInspection -->
+<mapper namespace="com.github.izhangzhihao.SSMSeedProject.Mapper.TeacherMapper">
+    <resultMap type="Teacher" id="TeacherResult">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="passWord" column="passWord"/>
+    </resultMap>
+
+    <select id="selectTeacherByStudentId" resultType="Teacher">
+        SELECT * FROM TEACHER WHERE studentId = #{id}
+    </select>
+</mapper>

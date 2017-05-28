@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.github.izhangzhihao.SSMSeedProject.Mapper.UserMapper">
+
+    <resultMap id="UserMap" type="com.github.izhangzhihao.SSMSeedProject.Model.User">
+        <id column="userName" property="username" jdbcType="VARCHAR"/>
+        <result column="passWord" property="passWord" jdbcType="VARCHAR"/>
+        <collection property="roles" ofType="Role"
+                    resultMap="com.github.izhangzhihao.SSMSeedProject.Mapper.RoleMapper.RoleMap"/>
+    </resultMap>
+
+    <sql id="selectUserWithRoles">
+        SELECT
+            User.userName           AS userName,
+            User.passWord           AS passWord,
+            User.accountExpired     AS accountExpired,
+            User.locked             AS locked,
+            User.credentialsExpired AS credentialsExpired,
+            User_Role.roleName      AS roleName
+        FROM User,
+            User_Role
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="UserMap" parameterType="java.lang.String">
+        <include refid="selectUserWithRoles"/>
+        where User_Role.userName = User.userName AND User.userName = #{username,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        DELETE FROM user
+        WHERE userName = #{username,jdbcType=VARCHAR}
+    </delete>
+
+    <insert id="insert" parameterType="User">
+        insert into user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="username != null">
+                userName,
+            </if>
+            <if test="password != null">
+                passWord,
+            </if>
+            <if test="isLocked != null">
+                locked
+            </if>
+            <if test="isAccountExpired != null">
+                accountExpired
+            </if>
+            <if test="isCredentialsExpired">
+                credentialsExpired
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="username != null">
+                #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="isLocked != null">
+                #{locked},
+            </if>
+            <if test="isAccountExpired != null">
+                #{accountExpired},
+            </if>
+            <if test="isCredentialsExpired">
+                #{credentialsExpired},
+            </if>
+        </trim>
+    </insert>
+
+
+    <update id="updateByPrimaryKey" parameterType="User">
+        update user
+        <set>
+            <if test="password != null">
+                passWord = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="isLocked != null">
+                locked = #{locked},
+            </if>
+            <if test="isAccountExpired != null">
+                accountExpired = #{accountExpired},
+            </if>
+            <if test="isCredentialsExpired">
+                credentialsExpired = #{credentialsExpired},
+            </if>
+        </set>
+        where userName = #{username,jdbcType=VARCHAR}
+    </update>
+
+
+    <select id="selectAllUser" resultMap="UserMap">
+        <include refid="selectUserWithRoles"/>
+    </select>
+
+</mapper>
