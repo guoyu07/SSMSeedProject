@@ -4,6 +4,8 @@ import com.github.izhangzhihao.SSMSeedProject.Security.AuthenticationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
+import org.springframework.core.env.Environment;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.BeanIds;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -21,6 +23,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private UserDetailsService userDetailsService;
+
+    @Autowired
+    private Environment env;
 
     private final AuthenticationFilter authenticationFilter = new AuthenticationFilter();
 
@@ -68,15 +73,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout()
                 .logoutSuccessUrl("/Account/Login")
 
-                .and()
+                .and();
 
-                .exceptionHandling()
 
-                .and()
+        if (env.getDefaultProfiles()[0].equals("development")) {
+            http.exceptionHandling()
 
-                .csrf()
-                .disable();
+                    .and()
 
-        http.headers().frameOptions().disable();
+                    .csrf()
+                    .disable();
+
+            http.headers().frameOptions().disable();
+        }else if(env.getDefaultProfiles()[0].equals("production")){
+            http.exceptionHandling();
+        }
     }
 }
