@@ -4,7 +4,6 @@ import com.github.izhangzhihao.SSMSeedProject.Security.AuthenticationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 import org.springframework.core.env.Environment;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.BeanIds;
@@ -74,10 +73,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //.logout()
                 //.clearAuthentication(true)
                 //.deleteCookies("JSESSIONID")
-                //.logoutSuccessUrl("/")
-                //.permitAll()
-
-                //.and();
+                //.logoutSuccessUrl("/");
 
 
         if (env.getDefaultProfiles()[0].equals("development")) {
