@@ -5,6 +5,9 @@
     <resultMap id="UserMap" type="com.github.izhangzhihao.SSMSeedProject.Model.User">
         <id column="userName" property="username" jdbcType="VARCHAR"/>
         <result column="passWord" property="passWord" jdbcType="VARCHAR"/>
+        <result column="accountExpired" property="isAccountExpired" jdbcType="BIT"/>
+        <result column="locked" property="isLocked" jdbcType="BIT"/>
+        <result column="credentialsExpired" property="isCredentialsExpired" jdbcType="BIT"/>
         <collection property="roles" ofType="Role"
                     resultMap="com.github.izhangzhihao.SSMSeedProject.Mapper.RoleMapper.RoleMap"/>
     </resultMap>
