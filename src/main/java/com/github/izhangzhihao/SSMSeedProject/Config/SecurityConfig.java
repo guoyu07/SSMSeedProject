@@ -48,6 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/webjars/**").permitAll()
                 .antMatchers("/app/**").permitAll()
                 .antMatchers("/assets/**").permitAll()
+                .antMatchers("/Account/LogOut").permitAll()
                 .antMatchers("/Account/**").anonymous()
                 .antMatchers("/console/**").anonymous()
 
@@ -66,14 +67,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .rememberMe()
                 .tokenValiditySeconds(604800)//记住我一周
-                .key("rememberMe")
-
-                .and()
-
-                .logout()
-                .logoutSuccessUrl("/Account/Login")
+                .key("RememberMe")
 
                 .and();
+
+                //.logout()
+                //.clearAuthentication(true)
+                //.deleteCookies("JSESSIONID")
+                //.logoutSuccessUrl("/")
+                //.permitAll()
+
+                //.and();
 
 
         if (env.getDefaultProfiles()[0].equals("development")) {
