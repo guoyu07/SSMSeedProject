@@ -1,9 +1,7 @@
 package com.github.izhangzhihao.SSMSeedProject.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,23 +12,31 @@ import java.util.List;
 
 import static java.util.stream.Collectors.toList;
 
-@Data
+
 @AllArgsConstructor
 @NoArgsConstructor
 public class User implements UserDetails {
 
     private static final long serialVersionUID = 4050428243965732995L;
 
+    @Getter
+    @Setter
     private String username;
 
+    @Setter
     private String passWord;
 
+    @Getter
+    @Setter
     private List<Role> roles;
 
+    @Setter
     private boolean isAccountExpired;
 
+    @Setter
     private boolean isLocked;
 
+    @Setter
     private boolean isCredentialsExpired;
 
     public User(String userName) {
@@ -42,7 +48,7 @@ public class User implements UserDetails {
      *
      * @return the authorities, sorted by natural key (never <code>null</code>)
      */
-    //@JsonIgnore
+    @JsonIgnore
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return roles
@@ -56,6 +62,7 @@ public class User implements UserDetails {
      *
      * @return the password
      */
+    @JsonIgnore
     @Override
     public String getPassword() {
         return passWord;
