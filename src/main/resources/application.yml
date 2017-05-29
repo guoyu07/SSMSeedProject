@@ -21,16 +21,11 @@ spring:
 management:
     security:
         enabled: false
-#security:
-#  basic:
-#    enabled: false
-#  ignored: /**
 mybatis:
   type-aliases-package: com.github.izhangzhihao.SSMSeedProject.Model
   configuration:
     cache-enabled: false
     log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
-
 ---
 
 spring:

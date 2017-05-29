@@ -75,17 +75,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //.deleteCookies("JSESSIONID")
                 //.logoutSuccessUrl("/");
 
-
-        if (env.getDefaultProfiles()[0].equals("development")) {
+        if (env.getActiveProfiles()[0].equals("development")) {
             http.exceptionHandling()
-
                     .and()
-
                     .csrf()
                     .disable();
 
-            http.headers().frameOptions().disable();
-        }else if(env.getDefaultProfiles()[0].equals("production")){
+            http.headers()
+                    .frameOptions()
+                    .disable();
+
+        }else if(env.getActiveProfiles()[0].equals("production")){
             http.exceptionHandling();
         }
     }
