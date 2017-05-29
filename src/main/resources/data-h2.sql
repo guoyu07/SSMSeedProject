@@ -6,3 +6,11 @@ INSERT INTO ROLE(roleName) VALUES ('ROLE_USER');
 
 INSERT INTO USER_ROLE(userName,roleName) VALUES ('admin','ROLE_ADMIN');
 INSERT INTO USER_ROLE(userName,roleName) VALUES ('admin','ROLE_USER');
+
+INSERT INTO USER_ROLE(userName,roleName) VALUES ('testUser','ROLE_USER');
+
+INSERT INTO ADDRESS(street,city,state,zip,country) VALUES ('street','city','state','zip','country');
+UPDATE USER set addrId = 1 WHERE userName = 'admin';
+
+INSERT INTO ADDRESS(street,city,state,zip,country) VALUES ('testUser_street','testUser_city','testUser_state','testUser_zip','testUser_country');
+UPDATE USER set addrId = 2 WHERE userName = 'testUser';

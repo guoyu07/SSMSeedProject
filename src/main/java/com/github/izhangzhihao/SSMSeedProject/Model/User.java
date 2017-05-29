@@ -15,7 +15,7 @@ import static java.util.stream.Collectors.toList;
 
 @AllArgsConstructor
 @NoArgsConstructor
-public class User implements UserDetails {
+public final class User implements UserDetails {
 
     private static final long serialVersionUID = 4050428243965732995L;
 
@@ -38,6 +38,10 @@ public class User implements UserDetails {
 
     @Setter
     private boolean isCredentialsExpired;
+
+    @Getter
+    @Setter
+    private Address address;
 
     public User(String userName) {
         this.username = userName;

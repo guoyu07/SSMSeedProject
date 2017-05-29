@@ -5,11 +5,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.apache.ibatis.type.Alias;
 
-@Alias("Address")
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Address {
+public final class Address {
     private int addrId;
     private String street;
     private String city;

@@ -8,6 +8,8 @@
         <result column="accountExpired" property="isAccountExpired" jdbcType="BIT"/>
         <result column="locked" property="isLocked" jdbcType="BIT"/>
         <result column="credentialsExpired" property="isCredentialsExpired" jdbcType="BIT"/>
+        <association property="address" javaType="Address"
+                     resultMap="com.github.izhangzhihao.SSMSeedProject.Mapper.AddressMapper.AddressMap"/>
         <collection property="roles" ofType="Role"
                     resultMap="com.github.izhangzhihao.SSMSeedProject.Mapper.RoleMapper.RoleMap"/>
     </resultMap>
@@ -19,14 +21,23 @@
             User.accountExpired     AS accountExpired,
             User.locked             AS locked,
             User.credentialsExpired AS credentialsExpired,
-            User_Role.roleName      AS roleName
-        FROM User,
-            User_Role
+            User_Role.roleName      AS roleName,
+            ADDRESS.addrId          AS addrId,
+            ADDRESS.street          AS street,
+            ADDRESS.city            AS city,
+            ADDRESS.state           AS state,
+            ADDRESS.zip             AS zip,
+            ADDRESS.country         AS country
+        FROM User
+            JOIN
+            User_Role On USER_ROLE.userName = User.userName
+            JOIN
+            ADDRESS ON User.addrId = ADDRESS.addrId
     </sql>
 
     <select id="selectByPrimaryKey" resultMap="UserMap" parameterType="java.lang.String">
         <include refid="selectUserWithRoles"/>
-        where User_Role.userName = User.userName AND User.userName = #{username,jdbcType=VARCHAR}
+        where User.userName = #{username,jdbcType=VARCHAR}
     </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
@@ -49,8 +60,11 @@
             <if test="isAccountExpired != null">
                 accountExpired
             </if>
-            <if test="isCredentialsExpired">
+            <if test="isCredentialsExpired != null">
                 credentialsExpired
+            </if>
+            <if test="address != null">
+                addrId
             </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -61,13 +75,16 @@
                 #{password,jdbcType=VARCHAR},
             </if>
             <if test="isLocked != null">
-                #{locked},
+                #{isLocked},
             </if>
             <if test="isAccountExpired != null">
-                #{accountExpired},
+                #{isAccountExpired},
             </if>
-            <if test="isCredentialsExpired">
-                #{credentialsExpired},
+            <if test="isCredentialsExpired != null">
+                #{isCredentialsExpired},
+            </if>
+            <if test="address != null">
+                #{address.addrId}
             </if>
         </trim>
     </insert>
@@ -80,13 +97,16 @@
                 passWord = #{password,jdbcType=VARCHAR},
             </if>
             <if test="isLocked != null">
-                locked = #{locked},
+                locked = #{isLocked},
             </if>
             <if test="isAccountExpired != null">
-                accountExpired = #{accountExpired},
+                accountExpired = #{isAccountExpired},
             </if>
-            <if test="isCredentialsExpired">
-                credentialsExpired = #{credentialsExpired},
+            <if test="isCredentialsExpired != null">
+                credentialsExpired = #{isCredentialsExpired},
+            </if>
+            <if test="address != null">
+                addrId = #{address.addrId}
             </if>
         </set>
         where userName = #{username,jdbcType=VARCHAR}

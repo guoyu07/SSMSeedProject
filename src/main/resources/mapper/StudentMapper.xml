@@ -13,7 +13,7 @@
                      select="com.github.izhangzhihao.SSMSeedProject.Mapper.AddressMapper.findAddressById"/>-->
         <!--一对一 嵌套结果-->
         <association property="address" column="addrid" javaType="Address"
-                     resultMap="com.github.izhangzhihao.SSMSeedProject.Mapper.AddressMapper.AddressResult"/>
+                     resultMap="com.github.izhangzhihao.SSMSeedProject.Mapper.AddressMapper.AddressMap"/>
         <!--集合的嵌套查询 好像哪里不对-->
         <!--<collection property="teacherList" javaType="ArrayList" column="stud_id" ofType="Teacher"
                     select="com.github.izhangzhihao.SSMSeedProject.Mapper.TeacherMapper.selectTeacherByStudentId"/>-->
