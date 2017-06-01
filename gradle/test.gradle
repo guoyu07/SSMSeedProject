@@ -1,0 +1,30 @@
+test {
+    useJUnit()
+    // listen to events in the test execution lifecycle
+    beforeTest { descriptor ->
+        logger.lifecycle("Running test: $descriptor")
+    }
+
+    // listen to standard out and standard error of the test JVM(s)
+    onOutput { descriptor, event ->
+        logger.lifecycle("Test: $descriptor produced standard out/err: $event.message")
+    }
+
+    jacoco {
+        destinationFile = file("$buildDir/jacoco/test.exec")
+    }
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        csv.enabled false
+        html.destination "${buildDir}/jacocoHtml"
+    }
+}
+
+build.dependsOn jacocoTestReport
+
+task integrationTest(type: Test) {
+    include 'test/java/**'
+}
