@@ -45,15 +45,13 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
     /**
      * 自定义异常页
      */
-    @Profile("production")
     @Bean
     public EmbeddedServletContainerCustomizer containerCustomizer() {
-
         return (container -> {
-            ErrorPage error401Page = new ErrorPage(HttpStatus.FORBIDDEN, "/403.html");
-            ErrorPage error404Page = new ErrorPage(HttpStatus.NOT_FOUND, "/404.html");
-            ErrorPage error500Page = new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR, "/500.html");
-            container.addErrorPages(error401Page, error404Page, error500Page);
+            ErrorPage error403Page = new ErrorPage(HttpStatus.FORBIDDEN, "/403");
+            ErrorPage error404Page = new ErrorPage(HttpStatus.NOT_FOUND, "/404");
+            ErrorPage error500Page = new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR, "/500");
+            container.addErrorPages(error403Page, error404Page, error500Page);
         });
     }
 
