@@ -31,12 +31,15 @@ public final class User implements UserDetails {
     @Setter
     private List<Role> roles;
 
+    @Getter
     @Setter
     private boolean isAccountExpired;
 
+    @Getter
     @Setter
     private boolean isLocked;
 
+    @Getter
     @Setter
     private boolean isCredentialsExpired;
 
@@ -80,6 +83,7 @@ public final class User implements UserDetails {
      * @return <code>true</code> if the user's account is valid (ie non-expired),
      * <code>false</code> if no longer valid (ie expired)
      */
+    @JsonIgnore
     @Override
     public boolean isAccountNonExpired() {
         return !this.isAccountExpired;
@@ -91,6 +95,7 @@ public final class User implements UserDetails {
      *
      * @return <code>true</code> if the user is not locked, <code>false</code> otherwise
      */
+    @JsonIgnore
     @Override
     public boolean isAccountNonLocked() {
         return !this.isLocked;
@@ -103,6 +108,7 @@ public final class User implements UserDetails {
      * @return <code>true</code> if the user's credentials are valid (ie non-expired),
      * <code>false</code> if no longer valid (ie expired)
      */
+    @JsonIgnore
     @Override
     public boolean isCredentialsNonExpired() {
         return !this.isCredentialsExpired;
@@ -114,6 +120,7 @@ public final class User implements UserDetails {
      *
      * @return <code>true</code> if the user is enabled, <code>false</code> otherwise
      */
+    @JsonIgnore
     @Override
     public boolean isEnabled() {
         return !this.isLocked;

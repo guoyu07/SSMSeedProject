@@ -1,5 +1,20 @@
+sourceSets {
+    integrationTest {
+        java {
+            srcDir 'src/integrationTest/java'
+        }
+
+        compileClasspath = main.output + configurations.testRuntime
+        runtimeClasspath = output + compileClasspath
+    }
+}
+
+
 task integrationTest(type: Test) {
-    include 'test/java/**'
+    group = 'Build'
+    description = 'Run integration tests'
+    testClassesDir = sourceSets.integrationTest.output.classesDir
+    classpath = sourceSets.integrationTest.runtimeClasspath
 }
 
 check.dependsOn integrationTest

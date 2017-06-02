@@ -1,4 +1,4 @@
-package com.github.izhangzhihao.SSMSeedProject.Test;
+package com.github.izhangzhihao.SSMSeedProject.IntegrationTest;
 
 import com.github.izhangzhihao.SSMSeedProject.Model.Address;
 import com.github.izhangzhihao.SSMSeedProject.Model.Role;
