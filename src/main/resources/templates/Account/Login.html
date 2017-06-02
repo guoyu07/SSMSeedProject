@@ -8,8 +8,30 @@
     function reloadValidateCode() {
         $("#validateCodeImg").attr("src", "/Account/validateCode?data=" + new Date() + Math.floor(Math.random() * 24));
     }
+
     $(document).ready(function () {
+        var assertValidateCode = function () {
+            if (!isNullOrEmpty($("#validateCode").val())) {
+                $.ajax({
+                    url: "/Account/assertValidateCode/" + $("#validateCode").val(),
+                    type: "POST",
+                    success: function () {
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        swal({
+                            title: "验证码填写错误，请重新填写！",
+                            type: "error",
+                            confirmButtonText: "知道了"
+                        });
+                    }
+                });
+            }
+        };
+        $("#validateCode").blur(function () {
+            assertValidateCode();
+        });
         $("#submit").click(function () {
+            assertValidateCode();
             document.getElementById("Password").value = hex_sha256($("#UserName").val() + $("#Password").val());
         });
     });
@@ -45,7 +67,7 @@
                 <div class="row form-group">
                     <div class=" col-xs-6">
                         <div class="">
-                            <input class="form-control input-lg" type="text" required="" name="validateCode"
+                            <input class="form-control input-lg" type="text" required="" name="validateCode" id="validateCode"
                                    placeholder="验证码">
                         </div>
                     </div>
