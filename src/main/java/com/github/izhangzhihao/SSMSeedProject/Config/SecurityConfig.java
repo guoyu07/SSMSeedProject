@@ -70,23 +70,26 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .and();
 
-                //.logout()
-                //.clearAuthentication(true)
-                //.deleteCookies("JSESSIONID")
-                //.logoutSuccessUrl("/");
+        //.logout()
+        //.clearAuthentication(true)
+        //.deleteCookies("JSESSIONID")
+        //.logoutSuccessUrl("/");
 
-        if (env.getActiveProfiles()[0].equals("development")) {
-            http.exceptionHandling()
-                    .and()
-                    .csrf()
-                    .disable();
+        String[] activeProfiles = env.getActiveProfiles();
+        if (activeProfiles != null && activeProfiles.length > 0) {
+            if (activeProfiles[0].equals("development")) {
+                http.exceptionHandling()
+                        .and()
+                        .csrf()
+                        .disable();
 
-            http.headers()
-                    .frameOptions()
-                    .disable();
+                http.headers()
+                        .frameOptions()
+                        .disable();
 
-        }else if(env.getActiveProfiles()[0].equals("production")){
-            http.exceptionHandling();
+            } else if (activeProfiles[0].equals("production")) {
+                http.exceptionHandling();
+            }
         }
     }
 }
