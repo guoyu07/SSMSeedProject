@@ -3,9 +3,11 @@ package com.github.izhangzhihao.SSMSeedProject.Model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.apache.ibatis.type.Alias;
 
 @Alias("Teacher")
+@ToString
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

@@ -13,6 +13,7 @@ import java.util.List;
 import static java.util.stream.Collectors.toList;
 
 
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 public final class User implements UserDetails {
