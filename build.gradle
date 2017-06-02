@@ -33,9 +33,14 @@ test {
     environment SPRING_PROFILES_ACTIVE: environment.SPRING_PROFILES_ACTIVE ?: "test"
 }
 
+jacoco {
+    toolVersion = "0.7.9"
+}
+
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 apply from: "$projectDir/gradle/dependencies.gradle"
 apply from: "$projectDir/gradle/test.gradle"
+apply from: "$projectDir/gradle/integrationTest.gradle"
 apply from: "$projectDir/gradle/settings.gradle"

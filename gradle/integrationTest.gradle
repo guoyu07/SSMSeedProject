@@ -1,0 +1,5 @@
+task integrationTest(type: Test) {
+    include 'test/java/**'
+}
+
+check.dependsOn integrationTest
