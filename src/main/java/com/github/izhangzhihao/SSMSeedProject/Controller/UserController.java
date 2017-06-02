@@ -1,5 +1,6 @@
 package com.github.izhangzhihao.SSMSeedProject.Controller;
 
+import com.github.izhangzhihao.SSMSeedProject.Annotation.RequireAdmin;
 import com.github.izhangzhihao.SSMSeedProject.Exception.OptionalNotPresentException;
 import com.github.izhangzhihao.SSMSeedProject.Model.User;
 import com.github.izhangzhihao.SSMSeedProject.Service.UserService;
@@ -14,19 +15,26 @@ import java.util.List;
 @RequestMapping("/User")
 public class UserController {
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
 
+    @Autowired
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+
+    @RequireAdmin
     @GetMapping("/UserList")
     public List<User> getAllUsers() {
         return userService.selectAllUser().orElseThrow(OptionalNotPresentException::new);
     }
 
+    @RequireAdmin
     @GetMapping("/userName/{userName}")
     public User getUser(@PathVariable String userName) {
         return userService.selectByPrimaryKey(userName).orElseThrow(OptionalNotPresentException::new);
     }
 
+    @RequireAdmin
     @GetMapping("/UserPageInfo/pageNumber/{pageNumber}/pageSize/{pageSize}")
     public PageInfo<User> UserPageInfo(@PathVariable int pageNumber,
                                        @PathVariable int pageSize) {

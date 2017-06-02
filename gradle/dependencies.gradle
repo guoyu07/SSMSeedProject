@@ -80,5 +80,6 @@ dependencies {
     testCompile(
             //jUnit
             "junit:junit:4.12",
+            "org.springframework.security:spring-security-test",
     )
 }
