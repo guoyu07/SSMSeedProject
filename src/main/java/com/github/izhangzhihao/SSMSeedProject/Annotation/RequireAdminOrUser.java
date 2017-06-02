@@ -1,5 +1,6 @@
 package com.github.izhangzhihao.SSMSeedProject.Annotation;
 
+
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Component;
 
@@ -13,6 +14,6 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Inherited
 @Documented
-@PreAuthorize("hasRole('USER')")
-public @interface RequireUser {
+@PreAuthorize("hasAnyRole({'USER','ADMIN'})")
+public @interface RequireAdminOrUser {
 }
