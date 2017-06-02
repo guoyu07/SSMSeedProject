@@ -20,13 +20,17 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private UserDetailsService userDetailsService;
+    private final UserDetailsService userDetailsService;
 
-    @Autowired
-    private Environment env;
+    private final Environment env;
 
     private final AuthenticationFilter authenticationFilter = new AuthenticationFilter();
+
+    @Autowired
+    public SecurityConfig(UserDetailsService userDetailsService, Environment env) {
+        this.userDetailsService = userDetailsService;
+        this.env = env;
+    }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -66,20 +70,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .rememberMe()
                 .tokenValiditySeconds(604800)//记住我一周
-                .key("RememberMe")
-
-                .and();
-
-        //.logout()
-        //.clearAuthentication(true)
-        //.deleteCookies("JSESSIONID")
-        //.logoutSuccessUrl("/");
+                .key("RememberMe");
 
         String[] activeProfiles = env.getActiveProfiles();
         if (activeProfiles != null && activeProfiles.length > 0) {
             if (activeProfiles[0].equals("development")) {
-                http.exceptionHandling()
-                        .and()
+                http
                         .csrf()
                         .disable();
 
@@ -88,7 +84,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         .disable();
 
             } else if (activeProfiles[0].equals("production")) {
-                http.exceptionHandling();
+
             }
         }
     }

@@ -14,4 +14,14 @@ public class IndexController {
     public String notFound() {
         return "404";
     }
+
+    @GetMapping("/403")
+    public String accessDenied() {
+        return "403";
+    }
+
+    @GetMapping("/500")
+    public String internalServerError() {
+        return "500";
+    }
 }
