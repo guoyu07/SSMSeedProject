@@ -1,4 +1,3 @@
-/*
 package com.github.izhangzhihao.SSMSeedProject.Service;
 
 import com.github.izhangzhihao.SSMSeedProject.Mapper.AddressMapper;
@@ -16,4 +15,3 @@ public class AddressService {
         return addressMapper.findAddressById(id);
     }
 }
-*/
