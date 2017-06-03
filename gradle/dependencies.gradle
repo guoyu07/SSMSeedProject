@@ -16,7 +16,6 @@ dependencies {
             "org.springframework.boot:spring-boot-starter-thymeleaf",
             "org.springframework.boot:spring-boot-starter-jdbc",
             "org.springframework.boot:spring-boot-starter-aop",
-            "org.springframework.boot:spring-boot-starter-test",
             "org.springframework.boot:spring-boot-starter-security",
             "org.springframework.boot:spring-boot-starter-actuator",
             "org.springframework.boot:spring-boot-devtools",
@@ -80,6 +79,7 @@ dependencies {
     testCompile(
             //jUnit
             "junit:junit:4.12",
+            "org.springframework.boot:spring-boot-starter-test",
             "org.springframework.security:spring-security-test",
     )
 }
