@@ -11,6 +11,7 @@ buildscript {
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.3.RELEASE")
+        classpath("se.transmode.gradle:gradle-docker:1.2")
     }
 }
 
@@ -19,10 +20,10 @@ apply plugin: "java"
 apply plugin: "org.springframework.boot"
 apply plugin: "jacoco"
 apply plugin: "idea"
+apply plugin: "docker"
 
 jar {
-    baseName = "SSMSeedProject"
-    version = "1.0.0-SNAPSHOT"
+    archiveName = "SSMSeedProject.jar"
 }
 
 bootRun {
@@ -44,3 +45,4 @@ apply from: "$projectDir/gradle/dependencies.gradle"
 apply from: "$projectDir/gradle/test.gradle"
 apply from: "$projectDir/gradle/integrationTest.gradle"
 apply from: "$projectDir/gradle/settings.gradle"
+apply from: "$projectDir/gradle/docker.gradle"
