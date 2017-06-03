@@ -1,12 +1,10 @@
-import java.time.LocalDateTime
-
 task buildDockerImage(type: Docker, dependsOn: build) {
     //def projectName = project.name.toLowerCase()
     def jarName = jar.baseName.toLowerCase()
     maintainer = "izhangzhihao@hotmail.com"
     //push = true
     tag = "izhangzhihao/$jarName"
-    dockerfile = file('src/docker/Dockerfile')
+    dockerfile = file('Dockerfile')
     doFirst {
         copy {
             from jar
