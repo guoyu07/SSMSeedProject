@@ -55,8 +55,6 @@ public class UserResourceSteps {
 
     @When("I request a user's info,is ROLE_ADMIN (.*)")
     public void requestGreeting(String isAdmin) throws Exception {
-        System.out.println("isAdmin");
-        System.out.println(isAdmin);
         if (Boolean.parseBoolean(isAdmin)) {
             resultActions = mockMvc.perform(
                     get("/User/userName/admin")
