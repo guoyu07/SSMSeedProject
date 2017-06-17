@@ -18,3 +18,4 @@ task integrationTest(type: Test) {
 }
 
 check.dependsOn integrationTest
+integrationTest.mustRunAfter test
