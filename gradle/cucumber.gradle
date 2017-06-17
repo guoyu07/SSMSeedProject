@@ -1,0 +1,7 @@
+cucumber {
+    // So that you can generate some pretty (...) reports:
+    formats = ['pretty', 'json:build/cucumber/cucumber.json', 'junit:build/cucumber/cucumber.xml', 'html:build/cucumber/html']
+
+    // So that you can run all features/scenarios except for those annotated with @Ignore:
+    tags = ['~@Ignore']
+}

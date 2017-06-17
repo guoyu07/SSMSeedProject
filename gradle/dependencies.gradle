@@ -1,4 +1,5 @@
 def ThymeleafVersion = "3.0.5.RELEASE"
+def cucumberVersion = "1.2.5"
 
 repositories {
     mavenLocal()
@@ -81,5 +82,10 @@ dependencies {
             "junit:junit:4.12",
             "org.springframework.boot:spring-boot-starter-test",
             "org.springframework.security:spring-security-test",
+    )
+    cucumberCompile(
+            "info.cukes:cucumber-java:$cucumberVersion",
+            "info.cukes:cucumber-junit:$cucumberVersion",
+            "info.cukes:cucumber-spring:$cucumberVersion"
     )
 }
