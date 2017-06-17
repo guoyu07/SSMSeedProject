@@ -5,3 +5,5 @@ cucumber {
     // So that you can run all features/scenarios except for those annotated with @Ignore:
     tags = ['~@Ignore']
 }
+
+check.dependsOn ":cucumber"
