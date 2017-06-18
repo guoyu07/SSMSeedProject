@@ -13,7 +13,7 @@ sourceSets {
 task integrationTest(type: Test) {
     group = 'Build'
     description = 'Run integration tests'
-    testClassesDir = sourceSets.integrationTest.output.classesDir
+    testClassesDirs = sourceSets.integrationTest.getOutput().classesDirs
     classpath = sourceSets.integrationTest.runtimeClasspath
 }
 
