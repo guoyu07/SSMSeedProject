@@ -37,7 +37,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     @NotNull
     private String obtainValidateCode(HttpServletRequest request) {
-        return request.getParameter("validateCode").toLowerCase();
+        return request.getParameter("validateCode");
     }
 
     public AuthenticationFilter() {
@@ -52,9 +52,9 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
                     "Authentication method not supported: " + request.getMethod());
         }
         String userValidateCode = obtainValidateCode(request);
-        String serverValidateCode = request.getSession().getAttribute("validateCode").toString().toLowerCase();
+        String serverValidateCode = request.getSession().getAttribute("validateCode").toString();
 
-        if (!userValidateCode.equals(serverValidateCode)) {
+        if (!userValidateCode.equalsIgnoreCase(serverValidateCode)) {
             throw new ValidateCodeNotMatchException("validate code not match");
         }
 

@@ -61,7 +61,7 @@ public class AccountController {
     @PostMapping("/assertValidateCode/{code}")
     public ResponseEntity<Void> assertValidateCode(@PathVariable String code, HttpSession session) {
         String rightCode = (String) session.getAttribute("validateCode");
-        final boolean result = code != null && !StringUtils.isEmpty(code) && code.toLowerCase().equals(rightCode.toLowerCase());
+        final boolean result = code.equalsIgnoreCase(rightCode);
         if (result) {
             return new ResponseEntity<>(HttpStatus.OK);
         } else {
