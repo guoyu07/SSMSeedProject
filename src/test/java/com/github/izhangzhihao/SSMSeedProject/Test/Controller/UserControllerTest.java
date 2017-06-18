@@ -3,26 +3,23 @@ package com.github.izhangzhihao.SSMSeedProject.Test.Controller;
 import com.github.izhangzhihao.SSMSeedProject.Controller.UserController;
 import com.github.izhangzhihao.SSMSeedProject.Model.User;
 import com.github.izhangzhihao.SSMSeedProject.Service.UserService;
-import com.github.izhangzhihao.SSMSeedProject.Test.Service.UserServiceTest;
-import org.junit.*;
-import org.junit.runner.*;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.springframework.beans.factory.annotation.*;
-import org.springframework.boot.test.autoconfigure.json.*;
-import org.springframework.boot.test.context.*;
-import org.springframework.boot.test.json.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.json.JsonTest;
+import org.springframework.boot.test.json.JacksonTester;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.junit4.*;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Optional;
 
 import static com.github.izhangzhihao.SSMSeedProject.Test.Utils.mockUser;
-import static org.assertj.core.api.Assertions.*;
-import static org.hamcrest.Matchers.*;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
-import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
@@ -43,7 +40,7 @@ public class UserControllerTest {
     private MockMvc mockMvc;
 
     @Before
-    public void setUpMockMVC(){
+    public void setUpMockMVC() {
         mockMvc = standaloneSetup(userController).build();
     }
 

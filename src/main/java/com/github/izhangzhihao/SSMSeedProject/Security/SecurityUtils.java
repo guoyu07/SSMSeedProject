@@ -3,7 +3,6 @@ package com.github.izhangzhihao.SSMSeedProject.Security;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 
 public class SecurityUtils {
 
@@ -21,7 +20,7 @@ public class SecurityUtils {
 
     /**
      * If the current user has a specific authority (security role).
-     *
+     * <p>
      * <p>The name of this method comes from the isUserInRole() method in the Servlet API</p>
      *
      * @param authority the authority to check

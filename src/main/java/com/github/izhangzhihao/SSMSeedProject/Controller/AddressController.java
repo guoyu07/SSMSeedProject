@@ -24,7 +24,7 @@ public class AddressController {
 
     @RequireAdminOrUser
     @GetMapping("/id/{id}")
-    public ResponseEntity<Address> findAddressById(@PathVariable int id){
+    public ResponseEntity<Address> findAddressById(@PathVariable int id) {
         return new ResponseEntity<>(addressService.findAddressById(id), HttpStatus.OK);
     }
 }

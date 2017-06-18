@@ -33,7 +33,7 @@ public class MyBatisConfig {
         bean.setTypeAliasesPackage("com.github.izhangzhihao.SSMSeedProject.Model");
 
         //分页插件
-        PageInterceptor pageInterceptor=new PageInterceptor();
+        PageInterceptor pageInterceptor = new PageInterceptor();
         Properties properties = new Properties();
         properties.setProperty("reasonable", "true");
         properties.setProperty("supportMethodsArguments", "true");

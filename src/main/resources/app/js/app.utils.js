@@ -188,7 +188,7 @@ var bindRedirect = function bindRedirect() {
 /**
  * 请求自带_csrf头
  */
-$(function() {
+$(function () {
     var token = $("meta[name='_csrf']").attr("content");
     var header = $("meta[name='_csrf_header']").attr("content");
     if (!(isNullOrEmpty(token) && isNullOrEmpty(header))) {

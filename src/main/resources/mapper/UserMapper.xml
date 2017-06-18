@@ -16,23 +16,23 @@
 
     <sql id="selectUserWithRoles">
         SELECT
-            User.userName           AS userName,
-            User.passWord           AS passWord,
-            User.accountExpired     AS accountExpired,
-            User.locked             AS locked,
-            User.credentialsExpired AS credentialsExpired,
-            User_Role.roleName      AS roleName,
-            ADDRESS.addrId          AS addrId,
-            ADDRESS.street          AS street,
-            ADDRESS.city            AS city,
-            ADDRESS.state           AS state,
-            ADDRESS.zip             AS zip,
-            ADDRESS.country         AS country
+        User.userName AS userName,
+        User.passWord AS passWord,
+        User.accountExpired AS accountExpired,
+        User.locked AS locked,
+        User.credentialsExpired AS credentialsExpired,
+        User_Role.roleName AS roleName,
+        ADDRESS.addrId AS addrId,
+        ADDRESS.street AS street,
+        ADDRESS.city AS city,
+        ADDRESS.state AS state,
+        ADDRESS.zip AS zip,
+        ADDRESS.country AS country
         FROM User
-            JOIN
-            User_Role On USER_ROLE.userName = User.userName
-            JOIN
-            ADDRESS ON User.addrId = ADDRESS.addrId
+        JOIN
+        User_Role On USER_ROLE.userName = User.userName
+        JOIN
+        ADDRESS ON User.addrId = ADDRESS.addrId
     </sql>
 
     <select id="selectByPrimaryKey" resultMap="UserMap" parameterType="java.lang.String">

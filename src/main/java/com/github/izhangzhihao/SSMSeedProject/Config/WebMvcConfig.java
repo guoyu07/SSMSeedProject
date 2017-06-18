@@ -9,7 +9,10 @@ import org.springframework.http.CacheControl;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.servlet.config.annotation.*;
+import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import java.util.concurrent.TimeUnit;
 

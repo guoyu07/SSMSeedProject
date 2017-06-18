@@ -10,7 +10,7 @@ Feature: User
     Then I should get a response with HTTP status code : <status>
     And The response should contain the message: <containsMessage>
     Examples:
-      |isAdmin | userName | status | containsMessage |
-      |true    | admin    | 200    | admin           |
-      |false   | admin    | 403    | 无权访问！       |
+      | isAdmin | userName | status | containsMessage |
+      | true    | admin    | 200    | admin           |
+      | false   | admin    | 403    | 无权访问！       |
 #      |true    | notExist | 404    | 这个页面不见了！  | because of https://github.com/spring-projects/spring-boot/issues/7321

@@ -37,7 +37,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
      */
     @Override
     public UserDetails loadUserByUsername(final @NotNull String UserName) throws UsernameNotFoundException {
-        Assert.hasText(UserName,"UserName can not be empty!");
+        Assert.hasText(UserName, "UserName can not be empty!");
         Optional<User> user = userService.selectByPrimaryKey(UserName);
 
         User loginUser = user.orElseThrow(() -> new UsernameNotFoundException("userName:" + UserName + "not found"));

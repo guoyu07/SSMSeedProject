@@ -4,8 +4,10 @@
 <head th:fragment="head">
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta th:name="_csrf" th:content="${_csrf.token}" th:if="${#arrays.contains(@environment.getActiveProfiles(),'production')}"/>
-    <meta th:name="_csrf_header" th:content="${_csrf.headerName}" th:if="${#arrays.contains(@environment.getActiveProfiles(),'production')}"/>
+    <meta th:name="_csrf" th:content="${_csrf.token}"
+          th:if="${#arrays.contains(@environment.getActiveProfiles(),'production')}"/>
+    <meta th:name="_csrf_header" th:content="${_csrf.headerName}"
+          th:if="${#arrays.contains(@environment.getActiveProfiles(),'production')}"/>
     <link rel="shortcut icon" href="/assets/images/show.png"/>
 
     <title>后台</title>
@@ -228,7 +230,9 @@
         </div>
 
         <footer class="footer text-right" th:fragment="footer">
-            © <script>document.write(new Date().getFullYear())</script> 张志豪
+            ©
+            <script>document.write(new Date().getFullYear())</script>
+            张志豪
         </footer>
 
     </div>
