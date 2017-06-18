@@ -1,7 +1,6 @@
 language: java
 sudo: required
 
-
 jdk:
   - oraclejdk8
 
@@ -11,7 +10,7 @@ before_install:
 script:
 - java -version
 - ./gradlew -version
-- ./gradlew build
+- ./gradlew build --console=plain
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
