@@ -19,7 +19,8 @@ buildscript {
 }
 
 
-apply plugin: "java"
+apply plugin: "jvm-component"
+apply plugin: "java-lang"
 apply plugin: "org.springframework.boot"
 apply plugin: "jacoco"
 apply plugin: "idea"
