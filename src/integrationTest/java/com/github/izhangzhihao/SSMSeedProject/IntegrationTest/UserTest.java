@@ -73,4 +73,15 @@ public class UserTest extends AbstractTransactionalJUnit4SpringContextTests {
                 get("/User/userName/admin")
         ).andExpect(status().isForbidden());
     }
+
+    @Test
+    public void NotFoundUserTest() throws Exception {
+        mockMvc.perform(
+                get("/User/userName/notExist")
+                        .with(admin)
+                        .accept(MediaType.APPLICATION_JSON_UTF8)
+                        .contentType(MediaType.APPLICATION_JSON_UTF8)
+        )
+                .andExpect(status().isNotFound());
+    }
 }

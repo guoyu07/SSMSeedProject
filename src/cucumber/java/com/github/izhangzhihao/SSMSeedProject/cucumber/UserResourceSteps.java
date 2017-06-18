@@ -54,16 +54,21 @@ public class UserResourceSteps {
     }
 
     @When("I request a user's info,is ROLE_ADMIN (.*)")
-    public void requestGreeting(String isAdmin) throws Exception {
-        if (Boolean.parseBoolean(isAdmin)) {
-            resultActions = mockMvc.perform(
-                    get("/User/userName/admin")
-                            .with(admin)
-            );
-        } else {
-            resultActions = mockMvc.perform(
-                    get("/User/userName/admin")
-            );
+    public void requestGreeting(String isAdmin) {
+        String userInfoURI = "/User/userName/" + userName;
+        try {
+            if (Boolean.parseBoolean(isAdmin)) {
+                resultActions = mockMvc.perform(
+                        get(userInfoURI)
+                                .with(admin)
+                );
+            } else {
+                resultActions = mockMvc.perform(
+                        get(userInfoURI)
+                );
+            }
+        } catch (Exception ignored) {
+
         }
     }
 
