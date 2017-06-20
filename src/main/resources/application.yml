@@ -41,6 +41,8 @@ spring:
         continue-on-error: false
     thymeleaf:
       cache: false
+    main:
+      banner-mode: "off"
 
 ---
 
