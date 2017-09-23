@@ -28,10 +28,6 @@ apply plugin: "docker"
 apply plugin: "com.github.samueltbrown.cucumber"
 apply plugin: "com.dorongold.task-tree"
 
-compileJava {
-    options.compilerArgs += ['--add-modules', 'java.xml.ws.annotation']
-}
-
 jar {
     archiveName = "SSMSeedProject.jar"
 }
