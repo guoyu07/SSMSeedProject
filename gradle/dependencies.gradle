@@ -47,7 +47,7 @@ dependencies {
 
             "org.jetbrains:annotations:15.0",
 
-            "org.projectlombok:lombok:1.16.14",
+            "org.projectlombok:lombok:1.16.18",
 
             "org.webjars:jquery:1.12.1",
             "org.webjars:fastclick:1.0.6",
